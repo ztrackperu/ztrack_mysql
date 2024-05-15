@@ -51,7 +51,7 @@ async def get_extraer_datos_empresa(id: int):
 #La funcion espera "ConceptoOTSchema"
 async def validar_live_data(notificacion: ValidarLive = Body(...)):
     #convertir en json
-    notificacion = jsonable_encoder(notificacion)   
+    #notificacion = jsonable_encoder(notificacion)   
     #print(notificacion)
     #enviar a la funcion añadir  
     new_notificacion = await validar_live(notificacion)
