@@ -64,5 +64,5 @@ async def validar_live(notificacion_data: dict) -> dict:
     #aqui busca el dato obtenido para mostrarlo como respuesta
     #new_notificacion = await notificacion_collection.find_one({"_id": notificacion.inserted_id})
     print(notificacion_data)
-    return "oli""
+    return "oli"
 
