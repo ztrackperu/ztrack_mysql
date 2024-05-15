@@ -59,19 +59,22 @@ async def lista_contenedores_data(id: int) -> dict:
     return data
 
 async def validar_live(notificacion_data: dict) -> dict:
+    #ok 
     #aqui envia el json a mongo y lo inserta
     #notificacion = await notificacion_collection.insert_one(notificacion_data)
     #aqui busca el dato obtenido para mostrarlo como respuesta
     #new_notificacion = await notificacion_collection.find_one({"_id": notificacion.inserted_id})
-    print(notificacion_data.data)
+    print(notificacion_data.data)  
     pro = notificacion_data.data 
     for val in pro:
-        #ver =json.load(val)
-        #print(ver.telemetria_id)
-        #print(ver.ultima_fecha)
-        print(val['telemetria_id'])
-
-    
+        #validaciond de datos internos 
+        print(val['telemetria_id']) 
+        print(val['ultima_fecha'])
+        query = "SELECT telemetria_id,ultima_fecha FROM contenedores where nombre_contenedor is not null and telemetria_id="+str(val['telemetria_id'])
+        cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(query)
+        dataz = cursor.fetchone()
+        print(dataz)
     print(pro[0])
     return "oli"
 
