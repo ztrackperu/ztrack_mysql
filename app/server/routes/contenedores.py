@@ -7,6 +7,7 @@ from server.funciones.contenedores import (
     retrieve_contenedores,
     lista_contenedores,
     lista_contenedores_empresa,
+    lista_contenedores_data,
 )
 #Aqui importamos el modelo necesario para la clase 
 from server.models.contenedores import (
@@ -33,6 +34,13 @@ async def get_lista_contenedores(id: int):
 @router.get("/ListaDispositivoEmpresa/{id}", response_description="contenedores recuperados")
 async def get_lista_contenedores_empresa(id: int):
     notificacions = await lista_contenedores_empresa(id)
+    if notificacions:
+        return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
+    return ResponseModel(notificacions, "Lista vacía devuelta")
+
+@router.get("/ExtraerDatos/{id}", response_description="data recuperados")
+async def get_extraer_datos_empresa(id: int):
+    notificacions = await lista_contenedores_data(id)
     if notificacions:
         return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
     return ResponseModel(notificacions, "Lista vacía devuelta")

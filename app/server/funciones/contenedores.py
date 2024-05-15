@@ -47,3 +47,14 @@ async def lista_contenedores_empresa(id: int) -> dict:
     data = cursor.fetchall()
     return data
 
+async def lista_contenedores_data(id: int) -> dict:
+    validar =""
+    #buscar relacion con empresa_id
+    sub = "SELECT telemetria_id,ultima_fecha FROM contenedores where nombre_contenedor is not null and estado=1"
+    query = sub if id ==1 else sub+ " and empresa_id="+str(id)
+    print (query)
+    cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute(query)
+    data = cursor.fetchall()
+    return data
+
