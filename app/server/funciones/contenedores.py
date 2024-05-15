@@ -66,9 +66,10 @@ async def validar_live(notificacion_data: dict) -> dict:
     print(notificacion_data.data)
     pro = notificacion_data.data 
     for val in pro:
-        ver =json.load(val)
-        print(ver.telemetria_id)
-        print(ver.ultima_fecha)
+        #ver =json.load(val)
+        #print(ver.telemetria_id)
+        #print(ver.ultima_fecha)
+        print(val['telemetria_id'])
 
     
     print(pro[0])
