@@ -8,11 +8,13 @@ from server.funciones.contenedores import (
     lista_contenedores,
     lista_contenedores_empresa,
     lista_contenedores_data,
+    validar_live,
 )
 #Aqui importamos el modelo necesario para la clase 
 from server.models.contenedores import (
     ErrorResponseModel,
     ResponseModel,
+    ValidarLive,
 )
 #aqui se definen las rutas de la API REST
 router = APIRouter()
@@ -44,3 +46,13 @@ async def get_extraer_datos_empresa(id: int):
     if notificacions:
         return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
     return ResponseModel(notificacions, "Lista vacía devuelta")
+
+@router.post("/VerificarLive/", response_description="Datos de los notificacion agregados a la base de datos.")
+#La funcion espera "ConceptoOTSchema"
+async def validar_live_data(notificacion: ValidarLive = Body(...)):
+    #convertir en json
+    notificacion = jsonable_encoder(notificacion)   
+    #print(notificacion)
+    #enviar a la funcion añadir  
+    new_notificacion = await validar_live(notificacion)
+    return ResponseModel(new_notificacion, "ok")

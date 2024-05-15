@@ -58,3 +58,11 @@ async def lista_contenedores_data(id: int) -> dict:
     data = cursor.fetchall()
     return data
 
+async def validar_live(notificacion_data: dict) -> dict:
+    #aqui envia el json a mongo y lo inserta
+    #notificacion = await notificacion_collection.insert_one(notificacion_data)
+    #aqui busca el dato obtenido para mostrarlo como respuesta
+    #new_notificacion = await notificacion_collection.find_one({"_id": notificacion.inserted_id})
+    print(notificacion_data)
+    return "oli""
+
