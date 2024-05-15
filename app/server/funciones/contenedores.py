@@ -65,6 +65,11 @@ async def validar_live(notificacion_data: dict) -> dict:
     #new_notificacion = await notificacion_collection.find_one({"_id": notificacion.inserted_id})
     print(notificacion_data.data)
     pro = notificacion_data.data 
+    for val in pro:
+        print(val.telemetria_id)
+        print(val.ultima_fecha)
+
+    
     print(pro[0])
     return "oli"
 
