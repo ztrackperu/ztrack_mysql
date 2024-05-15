@@ -74,7 +74,7 @@ async def validar_live(notificacion_data: dict) -> dict:
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(query)
         dataz = cursor.fetchone()
-        print(dataz.ultima_fecha)
+        print(dataz['ultima_fecha'])
     print(pro[0])
     return "oli"
 
