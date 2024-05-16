@@ -69,12 +69,15 @@ async def validar_live(notificacion_data: dict) -> dict:
     for val in pro:
         #validaciond de datos internos 
         print(val['telemetria_id']) 
-        print(val['ultima_fecha'].replace('T',' '))
+        ultimaFech =val['ultima_fecha'].replace('T',' ')
+        print(ultimaFech)
         query = "SELECT telemetria_id,ultima_fecha FROM contenedores where nombre_contenedor is not null and telemetria_id="+str(val['telemetria_id'])
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(query)
         dataz = cursor.fetchone()
         print(dataz['ultima_fecha'])
+        if(dataz['ultima_fecha']!=ultimaFech):
+            print("debemos actualizar los datos")
     #print(pro[0])
     return "oli"
 
