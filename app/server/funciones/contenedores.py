@@ -99,5 +99,5 @@ async def validar_live(notificacion_data: dict) -> dict:
             actualizar.append(dataz)
     #print(pro[0])
     print(len(actualizar))
-    return "oli"
+    return actualizar
 
