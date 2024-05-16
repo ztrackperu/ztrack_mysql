@@ -9,6 +9,7 @@ async def retrieve_contenedores():
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
     data = cursor.fetchall()
+    cursor.close()
     #print(data)
     #for registros in  data:
         #print(registros)
@@ -24,6 +25,7 @@ async def lista_contenedores(id: int) -> dict:
         cursor = conn.cursor()
         cursor.execute(query1, (id,))
         data = cursor.fetchone()
+        cursor.close()
         if(data):
             validar = "  and empresa_id ="+str(data[0])
             #print(validar)
@@ -34,6 +36,7 @@ async def lista_contenedores(id: int) -> dict:
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
     data = cursor.fetchall()
+    cursor.close()
     return data
 
 async def lista_contenedores_empresa(id: int) -> dict:
@@ -45,6 +48,7 @@ async def lista_contenedores_empresa(id: int) -> dict:
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
     data = cursor.fetchall()
+    cursor.close()
     return data
 
 async def lista_contenedores_data(id: int) -> dict:
@@ -56,6 +60,7 @@ async def lista_contenedores_data(id: int) -> dict:
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
     data = cursor.fetchall()
+    cursor.close()
     return data
 
 async def validar_live(notificacion_data: dict) -> dict:
@@ -80,6 +85,7 @@ async def validar_live(notificacion_data: dict) -> dict:
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(query)
         dataz = cursor.fetchone()
+        cursor.close()
         print(dataz)
         print(str(dataz['ultima_fecha']))
         if(str(dataz['ultima_fecha'])!=ultimaFech):
