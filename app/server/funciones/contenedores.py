@@ -80,6 +80,7 @@ async def validar_live(notificacion_data: dict) -> dict:
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(query)
         dataz = cursor.fetchone()
+        print(dataz)
         print(str(dataz['ultima_fecha']))
         if(str(dataz['ultima_fecha'])!=ultimaFech):
             print("debemos actualizar los datos")
