@@ -74,14 +74,14 @@ async def validar_live(notificacion_data: dict) -> dict:
     #notificacion = await notificacion_collection.insert_one(notificacion_data)
     #aqui busca el dato obtenido para mostrarlo como respuesta
     #new_notificacion = await notificacion_collection.find_one({"_id": notificacion.inserted_id})
-    print(notificacion_data.data)  
+    #print(notificacion_data.data)  
     pro = notificacion_data.data 
     actualizar =[]
     for val in pro:
         #validaciond de datos internos 
         #print(val['telemetria_id']) 
         ultimaFech =val['ultima_fecha'].replace('T',' ')
-        print(ultimaFech)
+        #print(ultimaFech)
         query = "SELECT telemetria_id,ultima_fecha,descripcionC,set_point,latitud,longitud,temp_supply_1,return_air,evaporation_coil,condensation_coil"
         query +=",compress_coil_1,ambient_air,cargo_1_temp,cargo_2_temp,cargo_3_temp,cargo_4_temp,relative_humidity,avl,line_voltage,line_frequency"
         query +=",consumption_ph_1,consumption_ph_2,consumption_ph_3,co2_reading,power_kwh,power_state,humidity_set_point,controlling_mode,set_point_co2"
@@ -93,9 +93,9 @@ async def validar_live(notificacion_data: dict) -> dict:
         conn.commit()
         cursor.close()
         #print(dataz)
-        print(str(dataz['ultima_fecha']))
+        #print(str(dataz['ultima_fecha']))
         if(str(dataz['ultima_fecha'])!=ultimaFech):
-            print("debemos actualizar los datos")
+            #print("debemos actualizar los datos")
             actualizar.append(dataz)
     #print(pro[0])
     print(len(actualizar))
