@@ -60,7 +60,7 @@ async def validar_live_data(notificacion: ValidarLive = Body(...)):
 
 #contenedor_data
 @router.get("/ContenedorData/{id}", response_description="data recuperados")
-async def get_dato_contenedor(id: int):
+async def get_dato_contenedor(id: str):
     notificacions = await contenedor_data(id)
     if notificacions:
         return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
