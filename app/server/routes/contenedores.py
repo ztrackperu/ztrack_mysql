@@ -9,6 +9,7 @@ from server.funciones.contenedores import (
     lista_contenedores_empresa,
     lista_contenedores_data,
     validar_live,
+    contenedor_data,
 )
 #Aqui importamos el modelo necesario para la clase 
 from server.models.contenedores import (
@@ -56,3 +57,11 @@ async def validar_live_data(notificacion: ValidarLive = Body(...)):
     #enviar a la funcion añadir  
     new_notificacion = await validar_live(notificacion)
     return ResponseModel(new_notificacion, "ok")
+
+#contenedor_data
+@router.get("/ContenedorData/{id}", response_description="data recuperados")
+async def get_dato_contenedor(id: int):
+    notificacions = await contenedor_data(id)
+    if notificacions:
+        return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
+    return ResponseModel(notificacions, "Lista vacía devuelta")
