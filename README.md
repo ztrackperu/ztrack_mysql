@@ -12,6 +12,9 @@ python3 -m venv myTest
 myTest\Scripts\activate
 ->ejecutar entorno virtual en en linux
 source myTest/bin/activate
+
+deactivate
+
 -> cade vez que haya un archivo con requerimientos se ejecuta de esta manera
 pip install -r requirements.txt
 -> se requiere crear .env

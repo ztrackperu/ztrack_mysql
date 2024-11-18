@@ -102,7 +102,7 @@ async def validar_live(notificacion_data: dict) -> dict:
 
         query = "SELECT telemetria_id,ultima_fecha,descripcionC,set_point,latitud,longitud,temp_supply_1,return_air,evaporation_coil,ambient_air"
         query +=",cargo_1_temp,cargo_2_temp,cargo_3_temp,cargo_4_temp,relative_humidity,avl,co2_reading,power_state,humidity_set_point,set_point_co2"
-        query +=",ethylene,sp_ethyleno,extra_1 "
+        query +=",ethylene,sp_ethyleno,extra_1,compress_coil_1 "
         query +="FROM contenedores where nombre_contenedor is not null and telemetria_id="+str(val['telemetria_id'])
         cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(query)
