@@ -81,6 +81,20 @@ async def contenedor_data(id: str) -> dict:
     cursor.close()
     return data
 
+async def contenedor_telemetria(id: int)->dict  :
+    validar =""
+    #buscar relacion con empresa_id
+    sub = "SELECT * FROM contenedores where estado=1 and telemetria_id='"
+    query = sub+int(id)+ "' order by id desc limit 1"
+    print (query)
+    cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute(query)
+    conn.commit()
+    data = cursor.fetchall()
+    cursor.close()
+    return data
+
+
 async def validar_live(notificacion_data: dict) -> dict:
     #ok 
     #aqui envia el json a mongo y lo inserta
