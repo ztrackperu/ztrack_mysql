@@ -85,7 +85,7 @@ async def contenedor_telemetria(id: int)->dict  :
     validar =""
     #buscar relacion con empresa_id
     sub = "SELECT * FROM contenedores where estado=1 and telemetria_id='"
-    query = sub+int(id)+ "' order by id desc limit 1"
+    query = sub+str(id)+ "' order by id desc limit 1"
     print (query)
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
