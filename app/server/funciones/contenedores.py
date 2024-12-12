@@ -71,8 +71,8 @@ async def lista_contenedores_data(id: int) -> dict:
 async def contenedor_data(id: str) -> dict:
     validar =""
     #buscar relacion con empresa_id
-    sub = "SELECT nombre_contenedor,ultima_fecha FROM contenedores where estado=1 and nombre_contenedor='"
-    query = sub+str(id)+ "' order by id desc limit 1"
+    sub = "SELECT nombre_contenedor,ultima_fecha FROM contenedores where estado=1 and nombre_contenedor="
+    query = sub+str(id)+ " order by id desc limit 1"
     print (query)
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(query)
