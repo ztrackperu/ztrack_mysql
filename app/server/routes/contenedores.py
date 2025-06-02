@@ -11,13 +11,15 @@ from server.funciones.contenedores import (
     validar_live,
     contenedor_data,
     contenedor_telemetria,
-    validar_telemetria
+    validar_telemetria,
+    actualizar_data
 )
 #Aqui importamos el modelo necesario para la clase 
 from server.models.contenedores import (
     ErrorResponseModel,
     ResponseModel,
     ValidarLive,
+    contenedor_base,
 )
 #aqui se definen las rutas de la API REST
 router = APIRouter()
@@ -29,6 +31,14 @@ async def validar_telemetria_ok(id: int):
         return notificacions
     return 0
 
+@router.post("/actualizar_data", response_description="Datos Listados de los usuarios.")
+async def actualizar_data_ok(datos: contenedor_base = Body(...)):
+    datos = jsonable_encoder(datos) 
+    new_notificacion = await actualizar_data(datos)
+    if  new_notificacion:
+        return new_notificacion
+    else :
+        return 0
 
 @router.get("/", response_description="contenedores recuperados")
 async def get_contenedores():
