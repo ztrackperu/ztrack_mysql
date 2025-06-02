@@ -49,6 +49,7 @@ def ErrorResponseModel(error, code, message):
 
 class contenedor_base(BaseModel):
     ultima_fecha : Optional[str] | None =None
+    fecha : Optional[str] | None =None
     set_point : Optional[float] | None =None
     temp_supply_1 : Optional[float] | None =None
     ambient_air : Optional[float] | None =None

@@ -1,6 +1,7 @@
 import json
 from server.database import conn
 import MySQLdb
+from datetime import datetime,timedelta
 
 
 async def validar_telemetria(id:int) :
@@ -17,7 +18,7 @@ async def actualizar_data(data: dict) -> dict:
     print(data)
     print("????????")
     cursor = conn.cursor()
-
+    data['fecha']=datetime.now()
     update_old_salary = (
     "UPDATE contenedores SET ultima_fecha = %s ,set_point = %s ,temp_supply_1= %s ,return_air= %s"
     ", ambient_air= %s ,relative_humidity= %s ,avl = %s , defrost_prueba = %s , ripener_prueba = %s , ethylene = %s"
