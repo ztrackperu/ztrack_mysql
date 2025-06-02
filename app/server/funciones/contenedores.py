@@ -4,7 +4,7 @@ import MySQLdb
 
 
 async def validar_telemetria(id:int) :
-    query = "SELECT nombre_contenedor FROM usuario_empresa WHERE telemetria_id=%s limit 1"
+    query = "SELECT nombre_contenedor FROM contenedores WHERE telemetria_id=%s limit 1"
     cursor = conn.cursor()
     cursor.execute(query, (id,))
     data = cursor.fetchone()
