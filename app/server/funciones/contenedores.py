@@ -17,7 +17,7 @@ async def actualizar_data(data: dict) -> dict:
     print("????????")
     print(data)
     print("????????")
-    cursor = conn.cursor()
+    cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     data['fecha']=datetime.now()
     update_old_salary = (
     "UPDATE contenedores SET ultima_fecha = %s ,set_point = %s ,temp_supply_1= %s ,return_air= %s"
@@ -33,7 +33,7 @@ async def actualizar_data(data: dict) -> dict:
                                         data['power_state'],data['evaporation_coil'],data['controlling_mode'],
                                         data['stateProcess'], data['cargo_1_temp'], data['cargo_2_temp'],
                                         data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
-    cursor.commit()
+    #cursor.commit()
     cursor.close()
 
 
