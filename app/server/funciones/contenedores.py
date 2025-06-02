@@ -155,7 +155,10 @@ async def validar_live(notificacion_data: dict) -> dict:
     for val in pro:
         #validaciond de datos internos 
         #print(val['telemetria_id']) 
-        ultimaFech =val['ultima_fecha'].replace('T',' ')
+        if  ultimaFech :
+            ultimaFech =val['ultima_fecha'].replace('T',' ')
+        else :
+            ultimaFech=val['ultima_fecha']
         #print(ultimaFech)
         query1 = "SELECT telemetria_id,ultima_fecha,descripcionC,set_point,latitud,longitud,temp_supply_1,return_air,evaporation_coil,condensation_coil"
         query1 +=",compress_coil_1,ambient_air,cargo_1_temp,cargo_2_temp,cargo_3_temp,cargo_4_temp,relative_humidity,avl,line_voltage,line_frequency"
