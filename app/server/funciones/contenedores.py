@@ -2,6 +2,16 @@ import json
 from server.database import conn
 import MySQLdb
 
+
+async def validar_telemetria(id:int) :
+    query = "SELECT nombre_contenedor FROM usuario_empresa WHERE telemetria_id=%s limit 1"
+    cursor = conn.cursor()
+    cursor.execute(query, (id,))
+    data = cursor.fetchone()
+    conn.commit()
+    cursor.close()
+    return data
+
 # Recuperar todos los contenedores presentes en la base de datos.
 async def retrieve_contenedores():
     usuarios = []
@@ -21,7 +31,7 @@ async def lista_contenedores(id: int) -> dict:
     validar =""
     #buscar relacion con empresa_id
     if id!=1 :
-        query1 = "SELECT empresa_id FROM usuario_empresa WHERE usuario_id=%s"
+        query1 = "SELECT empresa_id FROM usuario_empresa WHERE usuario_id=%s limit 1"
         #cursor = conn.cursor(MySQLdb.cursors.DictCursor)
         cursor = conn.cursor()
         cursor.execute(query1, (id,))
@@ -54,6 +64,8 @@ async def lista_contenedores_empresa(id: int) -> dict:
     data = cursor.fetchall()
     cursor.close()
     return data
+
+
 
 async def lista_contenedores_data(id: int) -> dict:
     validar =""
