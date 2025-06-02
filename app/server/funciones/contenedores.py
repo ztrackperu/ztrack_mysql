@@ -155,7 +155,7 @@ async def validar_live(notificacion_data: dict) -> dict:
     for val in pro:
         #validaciond de datos internos 
         #print(val['telemetria_id']) 
-        if  ultimaFech :
+        if  val['ultima_fecha'] :
             ultimaFech =val['ultima_fecha'].replace('T',' ')
         else :
             ultimaFech=val['ultima_fecha']
