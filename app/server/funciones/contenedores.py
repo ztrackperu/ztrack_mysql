@@ -24,28 +24,18 @@ async def actualizar_data(data: dict) -> dict:
     ", ambient_air= %s ,relative_humidity= %s ,avl = %s , defrost_prueba = %s , ripener_prueba = %s , ethylene = %s"
     " , set_point_co2 = %s , co2_reading = %s , humidity_set_point = %s , sp_ethyleno = %s , compress_coil_1 = %s "
     ", power_state = %s , evaporation_coil = %s , controlling_mode = %s , stateProcess = %s ,cargo_1_temp = %s "
+    ", condensation_coil = %s , consumption_ph_1 = %s , consumption_ph_2 = %s , consumption_ph_3 = %s ,evaporator_speed = %s "
+    ", capacity_load = %s , humidity_control = %s , condenser_speed = %s , line_frequency = %s ,line_voltage = %s "
     ", cargo_2_temp = %s , cargo_3_temp = %s , cargo_4_temp = %s , fresh_air_ex_mode = %s  ,imei =%s WHERE estado = 1 AND telemetria_id = %s  ")
-    cursor.execute(update_old_salary, (data['fecha'], data['set_point'],data['temp_supply_1'], 
-                                        data['return_air'], data['ambient_air'], data['relative_humidity'], 
-                                        data['avl'], data['inyeccion_pwm'], data['inyeccion_hora'], 
-                                        data['ethylene'], data['set_point_co2'], data['co2_reading'], 
-                                        data['humidity_set_point'], data['sp_ethyleno'],data['compress_coil_1'], 
-                                        data['power_state'],data['evaporation_coil'],data['controlling_mode'],
-                                        data['stateProcess'], data['cargo_1_temp'], data['cargo_2_temp'],
-                                        data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
-    #cursor.commit()
+    cursor.execute(update_old_salary, (data['fecha'], data['set_point'],data['temp_supply_1'], data['return_air'],
+                                    data['ambient_air'], data['relative_humidity'], data['avl'], data['inyeccion_pwm'], data['inyeccion_hora'], data['ethylene'],
+                                    data['set_point_co2'], data['co2_reading'], data['humidity_set_point'], data['sp_ethyleno'],data['compress_coil_1'], 
+                                    data['power_state'],data['evaporation_coil'],data['controlling_mode'],data['stateProcess'], data['cargo_1_temp'],
+                                    data['condensation_coil'],data['consumption_ph_1'],data['consumption_ph_2'], data['consumption_ph_3'],data['evaporator_speed'],
+                                    data['capacity_load'],data['humidity_control'],data['condenser_speed'], data['line_frequency'],data['line_voltage'],                                       
+                                    data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
     cursor.close()
 
-
-    #token_data = await validar_token_y_extender(asignacion_telemetria_data['token_ztrack'], asignacion_telemetria_data['id_usuario'])
-    #if not token_data:
-        #return "TOKEN_INVALIDO"
-    #if not asignacion_telemetria_data.get('especifico'):
-        #return "SIN_ESPECIFICO"
-    #realizar secuencia para ver informacion especifica 
-    #especifico = await asignacion_telemetria_collection.find_one({"id_asignacion_telemetria":asignacion_telemetria_data['especifico'],"estado_asignacion_telemetria":1},{"_id":0 })             
-    #await procesar_historico_log("Se solicito info de asignacion_telemetria  ",asignacion_telemetria_data['id_usuario'],{},asignacion_telemetria_data['especifico'])
-    #return especifico
     return data
 
 # Recuperar todos los contenedores presentes en la base de datos.
