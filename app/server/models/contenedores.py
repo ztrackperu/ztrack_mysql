@@ -74,6 +74,16 @@ class contenedor_base(BaseModel):
     cargo_4_temp : Optional[float] | None =None
     fresh_air_ex_mode : Optional[float] | None =None
     telemetria_id : Optional[float] | None =None
+    condensation_coil : Optional[float] | None =None
+    consumption_ph_1 : Optional[float] | None =None
+    consumption_ph_2 : Optional[float] | None =None
+    consumption_ph_3 : Optional[float] | None =None
+    evaporator_speed : Optional[float] | None =None
+    capacity_load : Optional[float] | None =None
+    humidity_control : Optional[float] | None =None
+    condenser_speed : Optional[float] | None =None
+    line_frequency : Optional[float] | None =None
+    line_voltage : Optional[float] | None =None
     i : Optional[float] | None =None
     class Config:
         json_schema_extra = {
