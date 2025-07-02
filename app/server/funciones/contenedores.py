@@ -117,6 +117,8 @@ async def lista_contenedores_empresa_2xl(id: int,gmt:str) -> dict:
         for dat in data :
             print("alterando gmt :)")
             ultima_fecha_str = dat["ultima_fecha"]
+            print("----formato de fecha -----")
+            print(ultima_fecha_str)
             ultima_fecha = datetime.strptime(ultima_fecha_str, "%Y-%m-%dT%H:%M:%S")
             nueva_fecha = ultima_fecha + timedelta(hours=diferencia)
             nueva_fecha_str = nueva_fecha.strftime("%Y-%m-%dT%H:%M:%S")
