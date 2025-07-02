@@ -109,8 +109,8 @@ async def lista_contenedores_empresa_2xl(id: int,gmt:str) -> dict:
     data = cursor.fetchall()
     cursor.close()
     hora_actual_servidor  = datetime.now()
-    hora_actual_str_servidor = hora_actual_servidor .strftime("%Y-%m-%dT%H:%M:%S")
-    hora_actual_str_cliente = hora_actual_servidor .strftime("%Y-%m-%dT%H:%M:%S")
+    hora_actual_str_servidor = hora_actual_servidor .strftime("%Y-%m-%d %H:%M:%S")
+    hora_actual_str_cliente = hora_actual_servidor .strftime("%Y-%m-%d %H:%M:%S")
 
     if gmt !="-5" :
         diferencia =int(gmt)+5
@@ -119,14 +119,14 @@ async def lista_contenedores_empresa_2xl(id: int,gmt:str) -> dict:
             ultima_fecha_str = dat["ultima_fecha"]
             print("----formato de fecha -----")
             print(ultima_fecha_str)
-            ultima_fecha = datetime.strptime(ultima_fecha_str, "%Y-%m-%dT%H:%M:%S")
+            ultima_fecha = datetime.strptime(ultima_fecha_str, "%Y-%m-%d %H:%M:%S")
             nueva_fecha = ultima_fecha + timedelta(hours=diferencia)
-            nueva_fecha_str = nueva_fecha.strftime("%Y-%m-%dT%H:%M:%S")
+            nueva_fecha_str = nueva_fecha.strftime("%Y-%m-%d %H:%M:%S")
             dat["ultima_fecha"] = nueva_fecha_str
         # Capturar la hora actual servidor 
-        solicitud_cliente = datetime.strptime(ultima_fecha_str, "%Y-%m-%dT%H:%M:%S")
+        solicitud_cliente = datetime.strptime(ultima_fecha_str, "%Y-%m-%d %H:%M:%S")
         nueva_fecha_solicitud_cliente = solicitud_cliente + timedelta(hours=diferencia)
-        hora_actual_str_cliente = nueva_fecha_solicitud_cliente.strftime("%Y-%m-%dT%H:%M:%S")
+        hora_actual_str_cliente = nueva_fecha_solicitud_cliente.strftime("%Y-%m-%d %H:%M:%S")
     resultado = {
         "data":data ,
         "hora servidor" :hora_actual_str_servidor ,
