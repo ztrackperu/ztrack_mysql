@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Body
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from typing import Optional
 
 #aqui pedimos las funciones que incluyen nuestro CRUD
 from server.funciones.contenedores import (
@@ -12,6 +13,7 @@ from server.funciones.contenedores import (
     contenedor_data,
     contenedor_telemetria,
     validar_telemetria,
+    lista_contenedores_empresa_2xl,
     actualizar_data
 )
 #Aqui importamos el modelo necesario para la clase 
@@ -57,6 +59,13 @@ async def get_lista_contenedores(id: int):
 @router.get("/ListaDispositivoEmpresa/{id}", response_description="contenedores recuperados")
 async def get_lista_contenedores_empresa(id: int):
     notificacions = await lista_contenedores_empresa(id)
+    if notificacions:
+        return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
+    return ResponseModel(notificacions, "Lista vacía devuelta")
+
+@router.get("/ListaDispositivoEmpresa2xl/{id}", response_description="contenedores recuperados")
+async def get_lista_contenedores_empresa_2xl(id: int, gmt: Optional[str] = "-5"):
+    notificacions = await lista_contenedores_empresa_2xl(id,gmt)
     if notificacions:
         return ResponseModel(notificacions, "Datos de los contenedores recuperados exitosamente.")
     return ResponseModel(notificacions, "Lista vacía devuelta")

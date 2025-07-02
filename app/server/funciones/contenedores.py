@@ -97,7 +97,41 @@ async def lista_contenedores_empresa(id: int) -> dict:
     cursor.close()
     return data
 
+async def lista_contenedores_empresa_2xl(id: int,gmt:str) -> dict:
+    validar =""
+    #buscar relacion con empresa_id
+    sub = "SELECT * FROM contenedores where nombre_contenedor is not null and estado=1"
+    query = sub if id ==1 else sub+ " and empresa_id="+str(id)
+    print (query)
+    cursor = conn.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute(query)
+    conn.commit()
+    data = cursor.fetchall()
+    cursor.close()
+    hora_actual_servidor  = datetime.now()
+    hora_actual_str_servidor = hora_actual_servidor .strftime("%Y-%m-%dT%H:%M:%S")
+    hora_actual_str_cliente = hora_actual_servidor .strftime("%Y-%m-%dT%H:%M:%S")
 
+    if gmt !="-5" :
+        diferencia =int(gmt)+5
+        for dat in data :
+            print("alterando gmt :)")
+            ultima_fecha_str = dat["ultima_fecha"]
+            ultima_fecha = datetime.strptime(ultima_fecha_str, "%Y-%m-%dT%H:%M:%S")
+            nueva_fecha = ultima_fecha + timedelta(hours=diferencia)
+            nueva_fecha_str = nueva_fecha.strftime("%Y-%m-%dT%H:%M:%S")
+            dat["ultima_fecha"] = nueva_fecha_str
+        # Capturar la hora actual servidor 
+        solicitud_cliente = datetime.strptime(ultima_fecha_str, "%Y-%m-%dT%H:%M:%S")
+        nueva_fecha_solicitud_cliente = solicitud_cliente + timedelta(hours=diferencia)
+        hora_actual_str_cliente = nueva_fecha_solicitud_cliente.strftime("%Y-%m-%dT%H:%M:%S")
+    resultado = {
+        "data":data ,
+        "hora servidor" :hora_actual_str_servidor ,
+        "hora_cliente" :hora_actual_str_cliente,
+        "gmt":gmt
+    }
+    return resultado
 
 async def lista_contenedores_data(id: int) -> dict:
     validar =""
