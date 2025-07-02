@@ -67,7 +67,10 @@ class contenedor_base(BaseModel):
     power_state : Optional[float] | None =None
     evaporation_coil : Optional[float] | None =None
     controlling_mode : Optional[float] | None =None
-    stateProcess : Optional[float] | None =None
+    
+    #stateProcess : Optional[float] | None =None
+    stateProcess : Optional[str] | None =None
+
     cargo_1_temp : Optional[float] | None =None
     cargo_2_temp : Optional[float] | None =None
     cargo_3_temp : Optional[float] | None =None
