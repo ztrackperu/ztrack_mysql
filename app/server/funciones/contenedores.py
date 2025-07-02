@@ -14,18 +14,18 @@ async def validar_telemetria(id:int) :
     return data
 
 async def actualizar_data(data: dict) -> dict:
-    print("????????")
-    print(data)
-    print("????????")
+    #print("????????")
+    #print(data)
+    #print("????????")
     cursor = conn.cursor(MySQLdb.cursors.DictCursor)
     #data['fecha']=datetime.now()
-    print("aqui estan los datos")
-    print(data)
-    print("---------")
+    #print("aqui estan los datos")
+    #print(data)
+    #print("---------")
     update_old_salary = (
     "UPDATE contenedores SET ultima_fecha = %s ,set_point = %s ,temp_supply_1= %s ,return_air= %s"
     ", ambient_air= %s ,relative_humidity= %s ,avl = %s , defrost_prueba = %s , ripener_prueba = %s , ethylene = %s"
-    " , set_point_co2 = %s , co2_reading = %s , humidity_set_point = %s , sp_ethyleno = %s , compress_coil_1 = %s "
+    ", set_point_co2 = %s , co2_reading = %s , humidity_set_point = %s , sp_ethyleno = %s , compress_coil_1 = %s "
     ", power_state = %s , evaporation_coil = %s , controlling_mode = %s , stateProcess = %s ,cargo_1_temp = %s "
     ", condensation_coil = %s , consumption_ph_1 = %s , consumption_ph_2 = %s , consumption_ph_3 = %s ,evaporator_speed = %s "
     ", capacity_load = %s , humidity_control = %s , condenser_speed = %s , line_frequency = %s ,line_voltage = %s "
@@ -36,10 +36,13 @@ async def actualizar_data(data: dict) -> dict:
                                     data['power_state'],data['evaporation_coil'],data['controlling_mode'],data['stateProcess'], data['cargo_1_temp'],
                                     data['condensation_coil'],data['consumption_ph_1'],data['consumption_ph_2'], data['consumption_ph_3'],data['evaporator_speed'],
                                     data['capacity_load'],data['humidity_control'],data['condenser_speed'], data['line_frequency'],data['line_voltage'],                                       
-                                    data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
+                                    data['cargo_2_temp'],data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
     cursor.close()
 
+
     return data
+
+
 
 # Recuperar todos los contenedores presentes en la base de datos.
 async def retrieve_contenedores():
