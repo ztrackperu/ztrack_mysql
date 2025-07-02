@@ -119,8 +119,10 @@ async def lista_contenedores_empresa_2xl(id: int,gmt:str) -> dict:
             ultima_fecha_str = dat["ultima_fecha"]
             print("----formato de fecha -----")
             print(ultima_fecha_str)
-            ultima_fecha = datetime.strptime(ultima_fecha_str, "%Y-%m-%d %H:%M:%S")
-            nueva_fecha = ultima_fecha + timedelta(hours=diferencia)
+            #ultima_fecha = datetime.strptime(str(ultima_fecha_str), "%Y-%m-%d %H:%M:%S")
+            #nueva_fecha = ultima_fecha + timedelta(hours=diferencia)
+            nueva_fecha = ultima_fecha_str + timedelta(hours=diferencia)
+
             nueva_fecha_str = nueva_fecha.strftime("%Y-%m-%d %H:%M:%S")
             dat["ultima_fecha"] = nueva_fecha_str
         # Capturar la hora actual servidor 
