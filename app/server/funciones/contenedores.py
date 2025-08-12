@@ -29,14 +29,14 @@ async def actualizar_data(data: dict) -> dict:
     ", power_state = %s , evaporation_coil = %s , controlling_mode = %s , stateProcess = %s ,cargo_1_temp = %s "
     ", condensation_coil = %s , consumption_ph_1 = %s , consumption_ph_2 = %s , consumption_ph_3 = %s ,evaporator_speed = %s "
     ", capacity_load = %s , humidity_control = %s , condenser_speed = %s , line_frequency = %s ,line_voltage = %s "
-    ", cargo_2_temp = %s , cargo_3_temp = %s , cargo_4_temp = %s , fresh_air_ex_mode = %s  ,imei =%s WHERE estado = 1 AND telemetria_id = %s  ")
+    ", cargo_2_temp = %s , cargo_3_temp = %s , cargo_4_temp = %s , fresh_air_ex_mode = %s  , o2_reading = %s , set_point_o2 = %s ,imei =%s WHERE estado = 1 AND telemetria_id = %s  ")
     cursor.execute(update_old_salary, (data['fecha'], data['set_point'],data['temp_supply_1'], data['return_air'],
                                     data['ambient_air'], data['relative_humidity'], data['avl'], data['inyeccion_pwm'], data['inyeccion_hora'], data['ethylene'],
                                     data['set_point_co2'], data['co2_reading'], data['humidity_set_point'], data['sp_ethyleno'],data['compress_coil_1'], 
                                     data['power_state'],data['evaporation_coil'],data['controlling_mode'],data['stateProcess'], data['cargo_1_temp'],
                                     data['condensation_coil'],data['consumption_ph_1'],data['consumption_ph_2'], data['consumption_ph_3'],data['evaporator_speed'],
                                     data['capacity_load'],data['humidity_control'],data['condenser_speed'], data['line_frequency'],data['line_voltage'],                                       
-                                    data['cargo_2_temp'],data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['i'],data['telemetria_id']  ))
+                                    data['cargo_2_temp'],data['cargo_3_temp'], data['cargo_4_temp'], data['fresh_air_ex_mode'], data['o2_reading'], data['set_point_o2'], data['i'],data['telemetria_id']  ))
     cursor.close()
 
 

@@ -69,8 +69,10 @@ class contenedor_base(BaseModel):
     controlling_mode : Optional[float] | None =None
     
     #stateProcess : Optional[float] | None =None
-    stateProcess : Optional[str] | None =None
-
+    o2_reading : Optional[str] | None =None
+    set_point_o2 : Optional[float] | None =None
+    
+    cargo_2_temp : Optional[float] | None =None
     cargo_1_temp : Optional[float] | None =None
     cargo_2_temp : Optional[float] | None =None
     cargo_3_temp : Optional[float] | None =None
