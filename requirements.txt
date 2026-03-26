@@ -3,5 +3,7 @@ uvicorn==0.22.0
 fastapi==0.100.0
 pydantic[email]==2.0.3
 python-decouple==3.8
+DBUtils>=3.0.0
+mysqlclient>=2.1.0
 
 # Tested on Python 3.11.3
