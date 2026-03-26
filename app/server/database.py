@@ -7,7 +7,7 @@ db_config = {
     'user': config("USER_DB"),
     'passwd': config("PASS_DB"),
     'db': config("DB"),
-    'port':  33061,
+    'port':  3306,
 }
 
 # Create a connection to the database

@@ -67,9 +67,10 @@ class contenedor_base(BaseModel):
     power_state : Optional[float] | None =None
     evaporation_coil : Optional[float] | None =None
     controlling_mode : Optional[float] | None =None
-    
+
+
     #stateProcess : Optional[float] | None =None
-    o2_reading : Optional[str] | None =None
+    o2_reading : Optional[float] | None =None
     set_point_o2 : Optional[float] | None =None
     
     cargo_2_temp : Optional[float] | None =None
@@ -83,7 +84,7 @@ class contenedor_base(BaseModel):
     consumption_ph_1 : Optional[float] | None =None
     consumption_ph_2 : Optional[float] | None =None
     consumption_ph_3 : Optional[float] | None =None
-    evaporator_speed : Optional[float] | None =None
+    inyeccion_hora : Optional[float] | None =None
     capacity_load : Optional[float] | None =None
     humidity_control : Optional[float] | None =None
     condenser_speed : Optional[float] | None =None

@@ -35,6 +35,9 @@ async def validar_telemetria_ok(id: int):
 
 @router.post("/actualizar_data", response_description="Datos Listados de los usuarios.")
 async def actualizar_data_ok(datos: contenedor_base = Body(...)):
+#async def actualizar_data_ok(datos=Body(...)):
+
+    print(datos)
     datos = jsonable_encoder(datos) 
     new_notificacion = await actualizar_data(datos)
     if  new_notificacion:
